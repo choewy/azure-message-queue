@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "description": "Javascript Study",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "build": "node index.js",
     "deploy": "gh-pages -d ."
   },
   "dependencies": {
-    "gh-pages": "^4.0.0"
+    "gh-pages": "^4.0.0",
+    "rehype-stringify": "^9.0.3",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
+    "unified": "^10.1.2"
   },
   "author": "choewy",
   "license": "MIT",
