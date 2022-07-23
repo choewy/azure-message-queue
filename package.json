@@ -1,0 +1,22 @@
+{
+  "name": "euny-study",
+  "version": "1.0.0",
+  "description": "Javascript Study",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "gh-pages -d ."
+  },
+  "dependencies": {
+    "gh-pages": "^4.0.0"
+  },
+  "author": "choewy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/choewy/euny-study/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/choewy/euny-study.git"
+  },
+  "homepage": "https://github.com/choewy/euny-study"
+}
