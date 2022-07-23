@@ -19,8 +19,8 @@ window.onload = () => {
     const sunTop = sun.offsetTop;
     const earthLeft = sunLeft + 300 * Math.cos(earthAngle);
     const earthTop = sunTop + 300 * Math.sin(earthAngle);
-    const moonLeft = earthLeft + 50 * Math.cos(moonAngle);
-    const moonTop = earthTop + 50 * Math.sin(moonAngle);
+    const moonLeft = earthLeft + 70 * Math.cos(moonAngle);
+    const moonTop = earthTop + 70 * Math.sin(moonAngle);
 
     // 위치이동
     earth.style.left = earthLeft + 'px';
