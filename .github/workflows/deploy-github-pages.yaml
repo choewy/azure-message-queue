@@ -26,6 +26,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      # Create ./static/links.js File
+      - name: Create ./static/links.js File
+        run: npm run build
+
       # Deploy with Github Pages
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
