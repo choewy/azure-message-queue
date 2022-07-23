@@ -5,8 +5,8 @@ window.onload = () => {
   const moon = document.getElementById('moon');
 
   // css 스타일 적용
-  sun.style.left = '250px';
-  sun.style.top = '250px';
+  sun.style.left = '50%';
+  sun.style.top = '50%';
 
   // 변수 선언
   let earthAngle = 0;
@@ -15,8 +15,10 @@ window.onload = () => {
   // 애니메이션 시작
   setInterval(() => {
     // 각도를 사용해 지구와 달의 좌표를 구한다.
-    const earthLeft = 250 + 150 * Math.cos(earthAngle);
-    const earthTop = 250 + 150 * Math.sin(earthAngle);
+    const sunLeft = sun.offsetLeft;
+    const sunTop = sun.offsetTop;
+    const earthLeft = sunLeft + 300 * Math.cos(earthAngle);
+    const earthTop = sunTop + 300 * Math.sin(earthAngle);
     const moonLeft = earthLeft + 50 * Math.cos(moonAngle);
     const moonTop = earthTop + 50 * Math.sin(moonAngle);
 
