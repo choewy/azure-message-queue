@@ -1,5 +1,4 @@
 import {
-  MessageHandlers,
   ProcessErrorArgs,
   ServiceBusClient,
   ServiceBusMessage,
@@ -59,20 +58,6 @@ export class AzureServiceBus {
     console.error(args);
   }
 
-  async close(): Promise<void> {
-    await Promise.all([
-      this.sender.close(),
-      this.receiver.close(),
-      this.client.close(),
-    ]);
-  }
-
-  async receiveFromClip(handlers: MessageHandlers): Promise<void> {
-    this.receiver.subscribe(handlers, {
-      maxConcurrentCalls: 20,
-    });
-  }
-
   async sendToService<T = any>(
     subject: ServiceBusSubject,
     body: T,
@@ -82,5 +67,13 @@ export class AzureServiceBus {
       subject,
       body,
     });
+  }
+
+  async close(): Promise<void> {
+    await Promise.all([
+      this.sender.close(),
+      this.receiver.close(),
+      this.client.close(),
+    ]);
   }
 }
