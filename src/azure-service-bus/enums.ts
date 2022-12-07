@@ -1,5 +1,5 @@
 export enum ServiceBusSubject {
-  InProgress = 'in-progress-clip',
+  InProgress = 'progress-clip',
   Completed = 'complete-clip',
   Failed = 'failed-clip',
 }

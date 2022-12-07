@@ -7,7 +7,6 @@ import {
 } from '@azure/service-bus';
 import { AzureServiceBusConfig } from 'src/config';
 import { ServiceBusSubject, ServiceSubscribeSubject } from './enums';
-import { returnPromiseType } from './promise';
 import { ReceivedMessageBody } from './types';
 
 export class AzureServiceBus {
@@ -35,20 +34,16 @@ export class AzureServiceBus {
 
     switch (subject) {
       case ServiceSubscribeSubject.Create:
-        await returnPromiseType(() => {
-          /** @progressing mp4 파일을 유튜브에 업로드 */
-          return this.sendToService(ServiceBusSubject.InProgress, {
-            clipId: body.clipId,
-          });
-        }, 1000);
+        /** @progressing mp4 파일을 유튜브에 업로드 */
+        await this.sendToService(ServiceBusSubject.InProgress, {
+          clipId: body.clipId,
+        });
 
-        await returnPromiseType(() => {
-          /** @complete 업로드 완료 후 서버 A에게 유튜브 영상 링크 전달 */
-          return this.sendToService(ServiceBusSubject.Completed, {
-            clipId: body.clipId,
-            url: 'https://youtu.be/WvKVWEbLru0',
-          });
-        }, 2000);
+        /** @complete 업로드 완료 후 서버 A에게 유튜브 영상 링크 전달 */
+        await this.sendToService(ServiceBusSubject.Completed, {
+          clipId: body.clipId,
+          youtubeUrl: 'https://youtu.be/WvKVWEbLru0',
+        });
 
         break;
     }
@@ -62,6 +57,7 @@ export class AzureServiceBus {
     subject: ServiceBusSubject,
     body: T,
   ): Promise<void> {
+    console.log(subject);
     return this.sender.sendMessages({
       contentType: 'application/json',
       subject,
